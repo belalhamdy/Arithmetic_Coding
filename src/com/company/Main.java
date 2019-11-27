@@ -11,14 +11,11 @@ public class Main {
         while (true) {
             System.out.println("\n1- Encode by Standard huffman\n2- Encode by Modified huffman\n3- Decode\nAny other character will halt");
             String c = in.nextLine();
-            double EPS = 1e-7;
-            double minimumProbability = EPS*2;
-            //double minimumProbability = 0.05;
             if (c.equals("1")) {
                 System.out.println("Enter the text line to encode");
                 String text = in.nextLine();
                 try {
-                    String encoded = ArithmeticCoding.Encode(text);
+                    String encoded = ArithmeticCoding.Encode(text,getProbabilities());
                     System.out.println("Encoded Text : " + encoded);
 
                 } catch (Exception ex) {
@@ -29,12 +26,23 @@ public class Main {
                 System.out.println("Enter the encoded bits to decode");
                 String text = in.nextLine();
                 try {
-                    String decoded = ArithmeticCoding.Decode(text);
+                    String decoded = ArithmeticCoding.Decode(text,getProbabilities());
                     System.out.println("Decoded Text : " + decoded);
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                 }
             } else break;
+        }
+    }
+    static double[] getProbabilities(){
+        Scanner i = new Scanner(System.in);
+        double[] ret = new double[256];
+        while(true) {
+            System.out.println("Enter character and it's probability of occurrence (-ve prob to halt)");
+            char c = i.next().charAt(0);
+            double p = i.nextDouble();
+            if (p<0) return ret;
+            ret[c] = p;
         }
     }
 }
