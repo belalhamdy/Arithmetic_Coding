@@ -51,6 +51,7 @@ public class ArithmeticCoding {
         while (numberOfSteps-- > 0){
             Map.Entry<Character, Pair<BigDecimal, BigDecimal>> curr = findByValue(value);
 
+
             ret.append(curr.getKey());
             lower = curr.getValue().getKey();
             upper = curr.getValue().getValue();
