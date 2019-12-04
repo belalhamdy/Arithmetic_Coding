@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArithmeticCoding {
-    static final int MAX_CHARACTERS = 256;
+    public static final int MAX_CHARACTERS = 256;
     static final char EOF = '\0';
     static final BigDecimal ZERO = new BigDecimal(0);
     static BigDecimal lower, upper, range;
@@ -80,6 +80,9 @@ public class ArithmeticCoding {
     }
 
     static String DecimalToFloat(BigDecimal low, BigDecimal high) {
+        System.out.println(low);
+        System.out.println(high);
+        System.out.println(low.add(high).divide(new BigDecimal(2),RoundingMode.HALF_UP));
         long one = 1;
         int idx = 1;
         double num = 0;
